@@ -48,12 +48,46 @@ class List {
     }
 
     reverse() {
+
     }
 
     sort() {
+        let x = this.head
+        let tempData
+        const length=this.getLength()
+        if(x==null)return
+        console.log(length)
+
+        for(let i = 0; i < length; i++)
+            while (x.next !== null){
+                if(x.value > x.next.value){
+                    tempData=x.value
+                    x.value=x.next.value
+                    x.next.value=tempData
+                }
+                x = x.next
+            }
+
     }
+
+    getLength(){
+        let listLength=0
+        let x = this.head
+
+        if(x==null)return listLength
+        listLength=1
+
+        while (x.next !== null){
+            listLength++
+            x=x.next
+        }
+
+        return listLength
+    }
+
 }
 
 const list = new List()
+
 
 
