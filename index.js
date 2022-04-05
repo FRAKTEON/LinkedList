@@ -1,10 +1,12 @@
 class Node {
-
+    
     constructor(element, next) {
         this.value = element
         this.next = next
     }
 
+    insertAt(){
+    }
 }
 
 class List {
@@ -50,7 +52,13 @@ class List {
     reverse() {
 
     }
-
+    
+    find() {
+    }
+    
+    print() {
+    }    
+    
     sort() {
         let x = this.head
         let tempData
