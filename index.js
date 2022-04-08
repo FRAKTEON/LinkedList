@@ -31,6 +31,11 @@ class List {
         node.next = new Node(element, null)
     }
 
+    autoPush(element)
+    {
+        for(let x=1; x <=element; x++)this.push(x)
+    }
+
     pop()
     {
 
@@ -159,6 +164,20 @@ class List {
             node = this.head
         }
 
+    }
+
+    toArray()
+    {
+        let node = this.head
+        const array = []
+
+        while(node !== null)
+        {
+            array.push(node.value)
+            node=node.next
+        }
+
+        console.log(array)
     }
 
     getLength()
