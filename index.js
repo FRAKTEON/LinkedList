@@ -9,28 +9,30 @@ class Node {
 
 class List {
 
-    constructor() {
+    constructor()
+    {
         this.head = null
-
     }
 
-    push(element) {
+    push(element)
+    {
 
         if (this.head == null) {
             this.head = new Node(element, null);
             return
         }
 
-        let x = this.head
+        let node = this.head
 
-        while (x.next !== null) {
-            x = x.next
+        while (node.next !== null) {
+            node = node.next
         }
 
-        x.next = new Node(element, null)
+        node.next = new Node(element, null)
     }
 
-    pop() {
+    pop()
+    {
 
         let node = this.head
 
@@ -44,11 +46,13 @@ class List {
         node.next = null
     }
 
-    clear(){
+    clear()
+    {
     this.head = null
     }
 
-    remove(element) {
+    remove(element)
+    {
         let node = this.head
         let removedNode = this.find(element)
 
@@ -64,10 +68,36 @@ class List {
         node.next = node.next.next
     }
 
-    reverse() {
+    reverse()
+    {
+        let head = this.head.value
+        let tail = this.getTail()
+
+        let node = this.head.next
+
+        for(let x=0; x<this.getLength()-3; x++)
+        {
+            for(let i=0; i < this.getLength()-3-x; i++)
+            {
+                this.swap(node, node.next)
+                node=node.next
+            }
+            node=this.head.next
+         }
+
+        this.head.value=tail.value
+        tail.value = head
     }
 
-    insertAfter(element, value){
+    swap(prev, next)
+    {
+        let tempData = prev.value
+        prev.value=next.value
+        next.value=tempData
+    }
+
+    insertAfter(element, value)
+    {
         let node = this.head
         let foundNode = this.find(element)
 
@@ -80,7 +110,8 @@ class List {
 
     }
 
-    find(element) {
+    find(element)
+    {
         let node = this.head
         if(node==null)return null
 
@@ -92,7 +123,8 @@ class List {
         return null
     }
     
-    print() {
+    print()
+    {
         let x = this.head
         let length=this.getLength()
 
@@ -106,50 +138,56 @@ class List {
         console.log("Number of nodes: "+length)
     }    
     
-    sort() {
-        let x = this.head
+    sort()
+    {
+        let node = this.head
         let tempData
         const length=this.getLength()
-        if(x==null)return
+        if(node==null)return
 
         for(let i = 0; i < length; i++){
-            while (x.next !== null){
-                if(x.value > x.next.value){
-                    tempData=x.value
-                    x.value=x.next.value
-                    x.next.value=tempData
+            while (node.next !== null){
+                if(node.value > node.next.value){
+                    tempData=node.value
+                    node.value=node.next.value
+                    node.next.value=tempData
                 }
-                x = x.next
+                node = node.next
             }
-        x = this.head
+            node = this.head
         }
 
     }
 
-    getLength(){
+    getLength()
+    {
         let listLength=0
-        let x = this.head
+        let node = this.head
 
-        if(x==null)return listLength
+        if(node==null)return listLength
         listLength=1
 
-        while (x.next !== null){
+        while (node.next !== null){
             listLength++
-            x=x.next
+            node=node.next
         }
 
         return listLength
     }
 
-    getHead(){
+    getHead()
+    {
         return this.head
     }
 
-    getTail(){
+    getTail()
+    {
         let node = this.head
+
         while(node.next !== null){
             node=node.next
         }
+
         return node
     }
 
@@ -165,10 +203,7 @@ function cmds(){
         "- clear()\n" +
         "- reverse()\n" +
         "- sort()\n" +
-        "- find(element)\n" +
-        "- getLength\n" +
-        "- getHead\n" +
-        "- getTail")
+        "- find(element)\n")
 }
 const list = new List()
 console.log("Type cmds() for a list of commands.")
