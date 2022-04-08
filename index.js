@@ -128,14 +128,16 @@ class List {
         let x = this.head
         let length=this.getLength()
 
-        console.log("    Linked List    ")
-        console.log("-------------------")
+        console.log("         Linked List        ")
+        console.log("----------------------------")
         for(let i=0; i < length; i++){
-            console.log("Node ("+i+"): "+x.value)
+            if(i==0)console.log("Head - [Data: " + x.value+" , Next] ---> ")
+            else if(i==length-1)console.log("Tail - [Data: " + x.value+" , Next] NULL ")
+            else console.log("       [Data: " + x.value+" , Next] ---> ")
             x=x.next
         }
-        console.log("-------------------")
-        console.log("Number of nodes: "+length)
+        console.log("----------------------------")
+        console.log("      Number of nodes: "+length)
     }    
     
     sort()
